@@ -1,13 +1,13 @@
-# Build the App
 FROM node:alpine as builder
 
-RUN mkdir -p /usr/src/
-WORKDIR /usr/src/
+RUN mkdir -p /usr/app/
+WORKDIR /usr/app/
 
-COPY package.json /usr/src/
-
+COPY package.json /usr/app/
 RUN yarn install
-COPY . /usr/src/
+
+COPY tsconfig.json /usr/app/
+COPY /src /usr/app/src
 
 RUN yarn build
 
@@ -16,7 +16,7 @@ RUN yarn build
 FROM node:alpine
 WORKDIR /app/
 
-COPY --from=builder /usr/src/dist/ /app/
+COPY --from=builder /usr/app/dist/ /app/
 COPY package.json /app/
 
 RUN yarn install --production

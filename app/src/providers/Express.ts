@@ -3,7 +3,6 @@ import express from "express";
 import http from "http";
 import Kernel from "../middlewares/Kernel";
 import Routes from "./Routes";
-import SocketIOService from "./Sockets";
 import Log from "../middlewares/Log";
 
 dotenv.config();
@@ -35,7 +34,7 @@ class Express {
    */
   public init(): void {
     const port = process.env.PORT || 3000;
-    SocketIOService.init(this.server);
+    
     
     // for 404 handler  
     this.express.use((req, res) => {
