@@ -1,7 +1,7 @@
 import os from "os";
 import { Application } from "express";
-import AuthRoute from "../routes/auth";
 import Log from "../middlewares/Log";
+import router from "../routes/article";
 
 /**
  * @class Routes
@@ -18,12 +18,7 @@ class Routes {
   public mount(_app: Application): Application {
     Log.info('Initializing routes');
     
-    // This is a sample route
-    _app.get('/', (req, res) => {
-      res.send(`<h3>It's ${os.hostname()}</h3>`);
-    });
-
-    _app.use('/api', AuthRoute);
+    _app.use('/api', router);
     return _app;
   }
 }
