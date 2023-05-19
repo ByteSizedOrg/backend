@@ -13,5 +13,5 @@ const schema = {
 };
 
 router.get("/v1/articles", Articles.list_article);
-router.post("/v1/articles", Validate.query(schema.article), Articles.insert_article);
+//router.post("/v1/articles", Validate.query(schema.article), Articles.insert_article);
 export default router;
