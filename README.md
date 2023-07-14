@@ -1,2 +1,2 @@
-# express-typescript
-Template for express
+# ByteSize backend
+The backend for a tech news aggregator app
